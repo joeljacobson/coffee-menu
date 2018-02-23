@@ -1,0 +1,56 @@
+{
+  "type":"object",
+  "properties": {
+    "wildfly": {
+        "description": "DC/OS Wildfly service configuration properties",
+          "properties":{
+                "name" : {
+                  "description":"Name of this service instance.",
+                  "type":"string",
+                  "default":"wildfly"
+                },
+                "cpus" : {
+                  "description":"CPUs",
+                  "type":"number",
+                  "default":"0.1"
+                },
+                "mem" : {
+                  "description":"Container Memory",
+                  "type":"number",
+                  "default":"2048"
+                },
+                "instances" : {
+                  "description":"Number of instances.",
+                  "type":"number",
+                  "default":"1"
+                },
+                "war" : {
+                  "description":"URL of war or ear file",
+                  "type":"string",
+                  "default":"https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/sample.war"
+                },
+                "java_opts" : {
+                  "description":"JAVA_OPTS variable",
+                  "type":"string",
+                  "default":""
+                },
+                "dockerimage" : {
+                  "description":"Docker Image",
+                  "type":"string",
+                  "default":"mesosphere/dcosappstudio:coffeemenu-wildfly-11.0.0-8u162-linux-x64-0.1.0"
+                },
+                "graceperiod" : {
+                  "description":"Grace Period for healthcheck.",
+                  "type":"number",
+                  "default":"480"
+                },
+                "healthcheckpath" : {
+                  "description":"Path for healthcheck.",
+                  "type":"string",
+                  "default":"/sample"
+                }    
+            }
+        }
+      }
+    }
+        

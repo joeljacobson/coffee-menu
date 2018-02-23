@@ -1,0 +1,56 @@
+{
+  "type":"object",
+  "properties": {
+    "jetty": {
+        "description": "DC/OS Jetty service configuration properties",
+          "properties":{
+                "name" : {
+                  "description":"Name of this service instance.",
+                  "type":"string",
+                  "default":"jetty"
+                },
+                "cpus" : {
+                  "description":"CPUs",
+                  "type":"number",
+                  "default":"0.1"
+                },
+                "mem" : {
+                  "description":"Container Memory",
+                  "type":"number",
+                  "default":"2048"
+                },
+                "instances" : {
+                  "description":"Number of instances.",
+                  "type":"number",
+                  "default":"1"
+                },
+                "war" : {
+                  "description":"URL of war file",
+                  "type":"string",
+                  "default":"https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/sample.war"
+                },
+                "java_opts" : {
+                  "description":"JAVA_OPTS variable",
+                  "type":"string",
+                  "default":""
+                },
+                "dockerimage" : {
+                  "description":"Docker Image",
+                  "type":"string",
+                  "default":"mesosphere/dcosappstudio:coffeemenu-jetty-9.4.8.v20171121-8u162-linux-x64-0.1.0"
+                },
+                "graceperiod" : {
+                  "description":"Grace Period for healthcheck.",
+                  "type":"number",
+                  "default":"60"
+                },
+                "healthcheckpath" : {
+                  "description":"Path for healthcheck.",
+                  "type":"string",
+                  "default":"/sample"
+                }
+            }
+        }
+      }
+    }
+        

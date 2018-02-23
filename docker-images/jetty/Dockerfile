@@ -1,0 +1,10 @@
+FROM centos:7
+ARG TECHVERSION=
+ARG JDKVERSION=
+ENV TECHVERSION=$TECHVERSION
+ENV JDKVERSION=$JDKVERSION
+COPY jetty-distribution-$TECHVERSION /opt/jetty-distribution-$TECHVERSION
+COPY jdk-${JDKVERSION}.tar.gz /opt
+COPY start.sh /opt/start.sh
+ENTRYPOINT /opt/start.sh
+

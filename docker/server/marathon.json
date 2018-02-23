@@ -1,0 +1,68 @@
+{
+  "id": "/infra/coffee-menu",
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
+  "constraints": [
+    [
+      "hostname",
+      "UNIQUE"
+    ]
+  ],
+  "container": {
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "hostPort": 8085,
+        "labels": {
+          "VIP_0": "/coffee-menu:80"
+        },
+        "protocol": "tcp",
+        "servicePort": 10000
+      }
+    ],
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "mesosphere/dcosappstudio:coffee-menu-v0.1.1",
+      "forcePullImage": true,
+      "privileged": false,
+      "parameters": []
+    }
+  },
+  "cpus": 0.25,
+  "disk": 0,
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 120,
+      "ignoreHttp1xx": false,
+      "intervalSeconds": 30,
+      "maxConsecutiveFailures": 3,
+      "portIndex": 0,
+      "timeoutSeconds": 5,
+      "delaySeconds": 15,
+      "protocol": "HTTP",
+      "path": "/repo-empty-v3.json",
+      "ipProtocol": "IPv4"
+    }
+  ],
+  "instances": 1,
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 128,
+  "gpus": 0,
+  "networks": [
+    {
+      "mode": "container/bridge"
+    }
+  ],
+  "requirePorts": false,
+  "upgradeStrategy": {
+    "maximumOverCapacity": 1,
+    "minimumHealthCapacity": 1
+  },
+  "killSelection": "YOUNGEST_FIRST",
+  "unreachableStrategy": {
+    "inactiveAfterSeconds": 0,
+    "expungeAfterSeconds": 0
+  },
+  "fetch": []
+}

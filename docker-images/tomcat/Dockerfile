@@ -1,0 +1,10 @@
+FROM centos:7
+ARG TECHVERSION=
+ARG JDKVERSION=
+ENV TECHVERSION=$TECHVERSION
+ENV JDKVERSION=$JDKVERSION
+COPY apache-tomcat-$TECHVERSION /opt/apache-tomcat-$TECHVERSION
+COPY jdk-${JDKVERSION}.tar.gz /opt
+COPY start.sh /opt/start.sh
+ENTRYPOINT /opt/start.sh
+
