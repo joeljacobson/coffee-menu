@@ -9,7 +9,9 @@
   "labels": {
 		"DCOS_SERVICE_SCHEME":"http",
 		"DCOS_SERVICE_NAME":"wildfly",
-		"DCOS_SERVICE_PORT_INDEX":"0"
+		"DCOS_SERVICE_PORT_INDEX":"0",
+    "HAPROXY_GROUP": "external",
+    "HAPROXY_0_VHOST": "wildfly.coffeemenu.mesosphere.io"
 	},
   "portDefinitions": [{
 		"port": 8080,
@@ -38,7 +40,7 @@
      {
       "gracePeriodSeconds": {{wildfly.graceperiod}},
       "intervalSeconds": 60,
-      "maxConsecutiveFailures": 3,
+      "maxConsecutiveFailures": 12,
       "timeoutSeconds": 20,
       "delaySeconds": 15,
       "portIndex": 0,

@@ -19,6 +19,7 @@ echo Downloading JDK $JDKVERSION
 curl -C - -L -o jdk-$JDKVERSION.tar.gz -R -s -S -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-$JDKVERSION.tar.gz
 
 tar xzf wildfly-$TECHVERSION.Final.tar.gz
+rm -fr wildfly-$TECHVERSION.Final/welcome-content
 
 echo docker build -t $DOCKERHUB_USER/$DOCKERHUB_REPO:coffeemenu-wildfly-$TECHVERSION-$JDKVERSION-$VERSION --build-arg JDKVERSION=$JDKVERSION --build-arg TECHVERSION=$TECHVERSION .
 docker build -t $DOCKERHUB_USER/$DOCKERHUB_REPO:coffeemenu-wildfly-$TECHVERSION-$JDKVERSION-$VERSION --build-arg JDKVERSION=$JDKVERSION --build-arg TECHVERSION=$TECHVERSION .

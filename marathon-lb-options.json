@@ -1,0 +1,6 @@
+{
+  "id": "/infra/marathon-lb",
+  "acceptedResourceRoles": [
+    "slave_public"
+  ]
+}

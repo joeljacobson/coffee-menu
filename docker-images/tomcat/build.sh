@@ -19,6 +19,8 @@ echo Downloading JDK $JDKVERSION
 curl -C - -L -o jdk-$JDKVERSION.tar.gz -R -s -S -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-$JDKVERSION.tar.gz
 
 tar xzf apache-$TECH-$TECHVERSION.tar.gz
+rm -fr apache-$TECH-$TECHVERSION/webapps/*
+
 sed -ie 's/<Connector port="8080"/<Connector port="${port.http.nonssl}"/g' apache-$TECH-$TECHVERSION/conf/server.xml
 
 echo docker build -t $DOCKERHUB_USER/$DOCKERHUB_REPO:coffeemenu-tomcat-$TECHVERSION-$JDKVERSION-$VERSION --build-arg JDKVERSION=$JDKVERSION --build-arg TECHVERSION=$TECHVERSION .

@@ -1,4 +1,4 @@
-cp /mnt/mesos/sandbox/*war /opt/apache-tomcat-$TECHVERSION/webapps
+cp /mnt/mesos/sandbox/*war /opt/apache-tomcat-$TECHVERSION/webapps/ROOT.war
 cd /opt
 tar xf jdk-$JDKVERSION.tar.gz
 ln -s jdk1* java

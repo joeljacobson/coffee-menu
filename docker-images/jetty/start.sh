@@ -1,4 +1,4 @@
-cp /mnt/mesos/sandbox/*war /opt/jetty-distribution-$TECHVERSION/webapps
+cp /mnt/mesos/sandbox/*war /opt/jetty-distribution-$TECHVERSION/webapps/root.war
 cd /opt
 tar xf jdk-$JDKVERSION.tar.gz
 ln -s jdk1* java

@@ -27,7 +27,7 @@
                 "war" : {
                   "description":"URL of war or ear file",
                   "type":"string",
-                  "default":"https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/sample.war"
+                  "default":"https://s3-us-west-2.amazonaws.com/mesosphere-demo-others/petclinic.war"
                 },
                 "java_opts" : {
                   "description":"JAVA_OPTS variable",
@@ -47,7 +47,7 @@
                 "healthcheckpath" : {
                   "description":"Path for healthcheck.",
                   "type":"string",
-                  "default":"/sample"
+                  "default":"/"
                 }    
             }
         }

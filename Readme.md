@@ -17,6 +17,16 @@ Dockerfiles for building app-server / jdk images are provided under docker-image
 Please check out Joerg's excellent blog on how to tune & tweak your Java apps on DC/OS and containers in general:
 https://jaxenter.com/nobody-puts-java-container-139373.html
 
+Applications get deployed under the ROOT context /.
+
+Per-default the Spring petclinic application gets deployed.
+
+Also they register with marathon-lb under:
+tomcat.coffeemenu.mesosphere.io
+jetty.coffeemenu.mesosphere.io
+wildfly.coffeemenu.mesosphere.io
+So you might want to add these hosts to your /etc/hosts and have these hostnames beeing resolved to your public host.
+
 Good luck!
 
 

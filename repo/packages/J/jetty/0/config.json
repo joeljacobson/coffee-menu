@@ -27,7 +27,7 @@
                 "war" : {
                   "description":"URL of war file",
                   "type":"string",
-                  "default":"https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/sample.war"
+                  "default":"https://s3-us-west-2.amazonaws.com/mesosphere-demo-others/petclinic.war"
                 },
                 "java_opts" : {
                   "description":"JAVA_OPTS variable",
@@ -42,12 +42,12 @@
                 "graceperiod" : {
                   "description":"Grace Period for healthcheck.",
                   "type":"number",
-                  "default":"60"
+                  "default":"120"
                 },
                 "healthcheckpath" : {
                   "description":"Path for healthcheck.",
                   "type":"string",
-                  "default":"/sample"
+                  "default":"/"
                 }
             }
         }
