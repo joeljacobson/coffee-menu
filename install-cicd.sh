@@ -26,7 +26,6 @@ sed  -ie '/coffeemenu/d' ./hosts
 
 echo "$PUBLICNODEIP gitlab.$APPLOWERCASE.mesosphere.io" >>./hosts
 echo "$PUBLICNODEIP nexus.$APPLOWERCASE.mesosphere.io" >>./hosts
-echo "$PUBLICNODEIP jenkins.$APPLOWERCASE.mesosphere.io" >>./hosts
 echo "$PUBLICNODEIP tomcat.$APPLOWERCASE.mesosphere.io" >>./hosts
 echo "$PUBLICNODEIP jetty.$APPLOWERCASE.mesosphere.io" >>./hosts
 echo "$PUBLICNODEIP wildfly.$APPLOWERCASE.mesosphere.io" >>./hosts
@@ -44,7 +43,7 @@ dcos marathon app add config/marathon-lb-config.json
 dcos marathon app add config/nexus-config.json
 dcos package install --yes --cli dcos-enterprise-cli
 
-dcos package install --yes jenkins --package-version=3.3.0-2.73.1 --options=jenkins-config.json
+dcos package install --yes jenkins --package-version=3.3.0-2.73.1 --options=config/jenkins-config.json
 
 echo Waiting for gitlab UI to be available
 until $(curl --output /dev/null --silent --head --fail http://gitlab.$APPLOWERCASE.mesosphere.io); do
@@ -57,7 +56,7 @@ echo
 echo I am going to open a browser window to gitlab. Please set the root user password there to \"rootroot\" and confirm it with \"rootroot\"
 echo Afterwards please logon to gitlab \(in the browser\) as user \"root\" with password \"rootroot\"
 echo When done please come back.
-open http://gitlab.$APPLOWERCASE.mesosphere.io:10080
+open http://gitlab.$APPLOWERCASE.mesosphere.io
 read -p "Press key when you set the password and are logged in as root." -n1 -s 
 echo
 echo On the bottom of the gitlab webpage is a green button \"New Project\". Please press it.
@@ -75,10 +74,26 @@ read -p "Press button when done." -n1 -s
 echo
 echo After a while the row with \"Petclinic\" turns green. Please click the link \"root/DCOSAppStudio-CICD\" in the "To GitLab" column.
 echo Congratulations! We are done setting up gitlab.
-
+echo We will now clone the repo to a location you specify \(./tmp is a good candidate\).
+echo -n "Where shall I clone to? (When prompted for password: \"rootroot\") > "
+read dir
+echo Now I am going to clone the repo and install the app. 
+mkdir -p $dir
+cwd=$(pwd)
+cd $dir
+git clone http://root@gitlab.$APPLOWERCASE.mesosphere.io/root/petclinic.git
+cd petclinic
+git add .
+git commit -m "First commit"
+git push origin master
+cd $cwd
 echo
 echo .
 echo We are setting up Jenkins now. 
+read -p "Press button when ready." -n1 -s
+echo
+echo First we need to create credentials for gitlab. Please use root as username and rootroot as password, id should read gitlab. Please press \"Apply\" afterwards.
+open $DCOS_URL/service/dev%2Ftools%2Fjenkins/credentials/store/system/domain/_/newCredentials
 read -p "Press button when ready." -n1 -s
 echo
 echo Next step is to create the build pipleine. In the browser window please enter \"$APP\" in the \"Enter Item Name\" text boxcall and select Pipeline as type and then press OK
@@ -88,7 +103,7 @@ echo
 echo Now check Poll SCM and use "* * * * *" as schedule which means we poll every minute \(5 Asterisk seperated by space\). Press Apply. Scroll down to Pipeline and select \"Pipeline script from SCM\". Select Git as SCM
 read -p "Press button when ready." -n1 -s
 echo
-echo Next we need to define the repository. Please enter http://gitlab.marathon.l4lb.thisdcos.directory/root/DCOSAppStudio-CICD.git as Repository URL and select root/******** as credentials. Press Apply
+echo Next we need to define the repository. Please enter http://devtoolsgitlab.marathon.l4lb.thisdcos.directory/root/petclinic.git as Repository URL and select root/******** as credentials. Press Apply
 read -p "Press button when ready." -n1 -s
 echo We are all set now. Thank you for your patience. You can now start build-pipelines by executing the upgrade.sh or downgrade.sh script in the folder where we cloned the repo into.
 echo Good luck!
