@@ -1,0 +1,30 @@
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+255.255.255.255	broadcasthost
+::1             localhost
+10.0.1.17	macmini
+10.0.1.8	emilspc
+#127.0.0.1	node-0.cassandra.mesos
+## vagrant-hostmanager-start id: d6e80f3d-d3ba-4f29-9c8a-fe0096bec13c
+192.168.65.111	a1.dcos
+
+192.168.65.50	boot.dcos
+
+192.168.65.90	m1.dcos
+
+192.168.65.60	p1.dcos
+192.168.65.60	spring.acme.org oinker.acme.org
+## vagrant-hostmanager-end
+
+34.208.68.83	yieldkit.mesosphere.io
+127.0.0.1	publicagent.mycluster.com
+52.24.0.23	howdy.com
+52.24.0.23	hello.com
+52.24.0.23	dockerhowdy.com
+52.24.0.23	dockerhello.com
+

@@ -2,6 +2,7 @@
   "type":"object",
   "properties": {
     "tomcat": {
+        "type": "object",
         "description": "DC/OS Tomcat service configuration properties",
           "properties":{
                 "name" : {
@@ -12,17 +13,20 @@
                 "cpus" : {
                   "description":"CPUs",
                   "type":"number",
-                  "default":"0.1"
+                  "default": 0.1,
+                  "minimum": 0.1
                 },
                 "mem" : {
                   "description":"Container Memory",
                   "type":"number",
-                  "default":"2048"
+                  "default": 2048,
+                  "minimum": 128
                 },
                 "instances" : {
                   "description":"Number of instances.",
                   "type":"number",
-                  "default":"1"
+                  "default":1,
+                  "minimum": 0
                 },
                 "war" : {
                   "description":"URL of war file",
@@ -42,14 +46,18 @@
                 "graceperiod" : {
                   "description":"Grace Period for healthcheck.",
                   "type":"number",
-                  "default":"120"
+                  "default":60,
+                  "minimum": 0
                 },
                 "healthcheckpath" : {
                   "description":"Path for healthcheck.",
                   "type":"string",
                   "default":"/"
                 }              
-            }
+            },
+            "required": [
+              "name"
+            ]
         }
       }
     }
