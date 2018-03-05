@@ -24,6 +24,9 @@
       {
         "containerPort": 8081,
         "hostPort": 0,
+        "labels": {
+          "VIP_0": "/dev/tools/nexus:8080"
+        },
         "protocol": "tcp",
         "servicePort": 10001
       }

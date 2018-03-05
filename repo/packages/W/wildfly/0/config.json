@@ -31,7 +31,7 @@
                 "war" : {
                   "description":"URL of war or ear file",
                   "type":"string",
-                  "default":"https://s3-us-west-2.amazonaws.com/mesosphere-demo-others/petclinic.war"
+                  "default":"http://devtoolsnexus.marathon.l4lb.thisdcos.directory:8080/repository/coffeemenu/petclinic-v4.3.11-build-latest.war"
                 },
                 "java_opts" : {
                   "description":"JAVA_OPTS variable",

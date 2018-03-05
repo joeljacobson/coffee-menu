@@ -88,7 +88,14 @@ git commit -m "First commit"
 git push origin master
 cd $cwd
 echo
-echo .
+echo We are setting up Nexus now. The only thing we need to create is a repository called: \"coffeemenu\" as \"raw \(hosted\)\"
+read -p "Press button when ready." -n1 -s
+echo
+echo Please sign-in as \"admin\" password: \"admin123\" 
+open http://nexus.coffeemenu.mesosphere.io/#admin/repository/repositories
+read -p "Press button when ready." -n1 -s
+echo
+open http://nexus.coffeemenu.mesosphere.io/#browse/browse/assets:coffeemenu
 echo We are setting up Jenkins now. 
 read -p "Press button when ready." -n1 -s
 echo
@@ -96,7 +103,11 @@ echo First we need to create credentials for gitlab. Please use root as username
 open $DCOS_URL/service/dev%2Ftools%2Fjenkins/credentials/store/system/domain/_/newCredentials
 read -p "Press button when ready." -n1 -s
 echo
-echo Next step is to create the build pipleine. In the browser window please enter \"$APP\" in the \"Enter Item Name\" text boxcall and select Pipeline as type and then press OK
+echo Update the executors maximum memory to 3Gb. Lookfor \"Mesos Cloud\" click on \"Advanced\" and set \"Jenkins Executor Memory in MB\" to 3072:
+open $DCOS_URL/service/dev/tools/jenkins/configure
+read -p "Press button when ready." -n1 -s
+echo
+echo Next step is to create the build pipleine. In the browser window please enter \"Petclinic\" in the \"Enter Item Name\" text boxcall and select Pipeline as type and then press OK
 open $DCOS_URL/service/dev%2Ftools%2Fjenkins/view/all/newJob
 read -p "Press button when ready." -n1 -s
 echo
@@ -105,6 +116,7 @@ read -p "Press button when ready." -n1 -s
 echo
 echo Next we need to define the repository. Please enter http://devtoolsgitlab.marathon.l4lb.thisdcos.directory/root/petclinic.git as Repository URL and select root/******** as credentials. Press Apply
 read -p "Press button when ready." -n1 -s
-echo We are all set now. Thank you for your patience. You can now start build-pipelines by executing the upgrade.sh or downgrade.sh script in the folder where we cloned the repo into.
+echo
+echo We are all set now. Thank you for your patience. 
 echo Good luck!
 dcos package repo add --index=0 coffee-menu http://coffee-menu.marathon.l4lb.thisdcos.directory:80/repo
