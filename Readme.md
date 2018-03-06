@@ -19,13 +19,15 @@ https://jaxenter.com/nobody-puts-java-container-139373.html
 
 Applications get deployed under the ROOT context /.
 
-Per-default the Spring petclinic application gets deployed.
+Per-default the Spring petclinic application gets deployed. The war will be downloaded from a local nexus repository. Please see install-cicd.sh for details.
+In case you want to deploy petclinic without ci/cd here's a link to directly deployable war file:
+https://s3-us-west-2.amazonaws.com/mesosphere-demo-others/petclinic.war
 
-Also they register with marathon-lb under:
+The deployed task will register with marathon-lb under:
 tomcat.coffeemenu.mesosphere.io
 jetty.coffeemenu.mesosphere.io
 wildfly.coffeemenu.mesosphere.io
-So you might want to add these hosts to your /etc/hosts and have these hostnames beeing resolved to your public host.
+So you might want to add these hosts to your /etc/hosts and have these hostnames beeing resolved to your public host (the install-cicd.sh scripts does that for you).
 
 Good luck!
 

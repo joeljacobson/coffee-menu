@@ -1,0 +1,13 @@
+{
+  "images": {
+    "icon-small": "https://s3-us-west-2.amazonaws.com/mesosphere-demo-others/tomcat-small.png",
+    "icon-medium": "https://s3-us-west-2.amazonaws.com/mesosphere-demo-others/tomcat-medium.png",
+    "icon-large": "https://s3-us-west-2.amazonaws.com/mesosphere-demo-others/tomcat-large.png",
+    "screenshots": [
+    ]
+  },
+  "assets": {
+    "uris": {
+    }
+  }
+}

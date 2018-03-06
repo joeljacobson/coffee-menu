@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cwd=$(pwd)
+
+cp *war jetty-distribution-__TECHVERSION__/webapps/root.war
+tar xf jdk-__JDKVERSION__.tar.gz
+ln -s jdk1* java
+export JAVA_HOME=$cwd/java
+export JAVA=$JAVA_HOME/bin/java
+export PATH=$JAVA_HOME/bin:$PATH
+
+export JETTY_PORT=$PORT0
+export JETTY_ARGS=jetty.http.port=$PORT0
+export JAVA_OPTIONS=$JAVA_OPTS
+jetty-distribution-__TECHVERSION__/bin/jetty.sh run

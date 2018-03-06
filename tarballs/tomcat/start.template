@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cwd=$(pwd)
+
+cp *war ./apache-tomcat-__TECHVERSION__/webapps/ROOT.war
+
+tar xf jdk-__JDKVERSION__.tar.gz
+ln -s jdk1* java
+export JAVA_HOME=$cwd/java
+export PATH=$JAVA_HOME/bin:$PATH
+
+export JAVA_OPTS="$JAVA_OPTS -Dport.http.nonssl=$PORT0"
+
+./apache-tomcat-__TECHVERSION__/bin/catalina.sh run 

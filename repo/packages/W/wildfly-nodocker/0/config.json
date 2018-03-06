@@ -8,7 +8,7 @@
                 "name" : {
                   "description":"Name of this service instance.",
                   "type":"string",
-                  "default":"prod/appserver/wildfly"
+                  "default":"prod/appserver/wildfly-nodocker"
                 },
                 "cpus" : {
                   "description":"CPUs",
@@ -38,10 +38,15 @@
                   "type":"string",
                   "default":""
                 },
-                "dockerimage" : {
-                  "description":"Docker Image",
+                "wildfly": {
+                  "description":"Wildfly tarball",
                   "type":"string",
-                  "default":"mesosphere/dcosappstudio:coffeemenu-wildfly-11.0.0-8u162-linux-x64-0.1.0"
+                  "default":"https://s3-us-west-2.amazonaws.com/mesosphere-demo-others/wildfly-11.0.0.Final-deploy.tar.gz"
+                },
+                "jdk" : {
+                  "description":"JDK",
+                  "type":"string",
+                  "default":"https://s3-us-west-2.amazonaws.com/mesosphere-demo-others/jdk-8u162-linux-x64.tar.gz"
                 },
                 "graceperiod" : {
                   "description":"Grace Period for healthcheck.",

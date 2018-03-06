@@ -29,6 +29,9 @@ echo "$PUBLICNODEIP nexus.$APPLOWERCASE.mesosphere.io" >>./hosts
 echo "$PUBLICNODEIP tomcat.$APPLOWERCASE.mesosphere.io" >>./hosts
 echo "$PUBLICNODEIP jetty.$APPLOWERCASE.mesosphere.io" >>./hosts
 echo "$PUBLICNODEIP wildfly.$APPLOWERCASE.mesosphere.io" >>./hosts
+echo "$PUBLICNODEIP tomcat-nodocker.$APPLOWERCASE.mesosphere.io" >>./hosts
+echo "$PUBLICNODEIP jetty-nodocker.$APPLOWERCASE.mesosphere.io" >>./hosts
+echo "$PUBLICNODEIP wildfly-nodocker.$APPLOWERCASE.mesosphere.io" >>./hosts
 
 echo We are going to add a couple of hosts to your /etc/hosts. Therefore we need your local password.
 sudo mv hosts /etc/hosts

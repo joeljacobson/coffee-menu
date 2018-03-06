@@ -13,7 +13,7 @@
                 "cpus" : {
                   "description":"CPUs",
                   "type":"number",
-                  "default": 0.1,
+                  "default": 1,
                   "minimum": 0.1
                 },
                 "mem" : {

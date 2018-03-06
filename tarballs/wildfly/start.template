@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cwd=$(pwd)
+
+cp *.war wildfly-__TECHVERSION__.Final/standalone/deployments
+
+tar xf jdk-__JDKVERSION__.tar.gz
+ln -s jdk1* java
+export JAVA_HOME=$cwd/java
+export PATH=$JAVA_HOME/bin:$PATH
+
+./wildfly-__TECHVERSION__.Final/bin/standalone.sh -Djboss.http.port=$PORT0 -Djboss.bind.address=0.0.0.0

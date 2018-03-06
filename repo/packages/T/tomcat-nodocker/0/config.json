@@ -1,25 +1,25 @@
 {
   "type":"object",
   "properties": {
-    "wildfly": {
+    "tomcat": {
         "type": "object",
-        "description": "DC/OS Wildfly service configuration properties",
+        "description": "DC/OS Tomcat service configuration properties",
           "properties":{
                 "name" : {
                   "description":"Name of this service instance.",
                   "type":"string",
-                  "default":"prod/appserver/wildfly"
+                  "default":"prod/appserver/tomcat-nodocker"
                 },
                 "cpus" : {
                   "description":"CPUs",
                   "type":"number",
-                  "default":1,
+                  "default": 1,
                   "minimum": 0.1
                 },
                 "mem" : {
                   "description":"Container Memory",
                   "type":"number",
-                  "default":2048,
+                  "default": 2048,
                   "minimum": 128
                 },
                 "instances" : {
@@ -29,7 +29,7 @@
                   "minimum": 0
                 },
                 "war" : {
-                  "description":"URL of war or ear file",
+                  "description":"URL of war file",
                   "type":"string",
                   "default":"http://devtoolsnexus.marathon.l4lb.thisdcos.directory:8080/repository/coffeemenu/petclinic-v4.3.11-build-latest.war"
                 },
@@ -38,22 +38,27 @@
                   "type":"string",
                   "default":""
                 },
-                "dockerimage" : {
-                  "description":"Docker Image",
+                "tomcat": {
+                  "description":"Tomcat tarball",
                   "type":"string",
-                  "default":"mesosphere/dcosappstudio:coffeemenu-wildfly-11.0.0-8u162-linux-x64-0.1.0"
+                  "default":"https://s3-us-west-2.amazonaws.com/mesosphere-demo-others/apache-tomcat-9.0.5-deploy.tar.gz"
+                },
+                "jdk" : {
+                  "description":"JDK",
+                  "type":"string",
+                  "default":"https://s3-us-west-2.amazonaws.com/mesosphere-demo-others/jdk-8u162-linux-x64.tar.gz"
                 },
                 "graceperiod" : {
                   "description":"Grace Period for healthcheck.",
                   "type":"number",
-                  "default":240,
+                  "default":60,
                   "minimum": 0
                 },
                 "healthcheckpath" : {
                   "description":"Path for healthcheck.",
                   "type":"string",
                   "default":"/"
-                }    
+                }              
             },
             "required": [
               "name"
